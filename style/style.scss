@@ -1,0 +1,84 @@
+@mixin box($size){
+	height:$size;
+	width:$size;
+}
+
+@mixin bordered($thick,$style,$color){
+	border:$thick $style $color;
+}
+
+.modal{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.8);
+
+	.modalbody{
+		width:50%;
+		background-color:#FFF;
+		margin:15px auto;
+		padding:20px;
+	}
+}
+.hide{
+	display:none;
+}
+.right{
+	float:right;
+	margin-right:5px;
+}
+
+body{
+	.plantType{
+		width:20%;
+		@include bordered(1px,solid,black);
+		float:left;
+		display:inline-block;
+
+		.type{
+			width:90%;
+			@include bordered(1px,solid,black);
+			text-align:center;
+			margin:3px auto;
+		}
+		.addType{
+			@extend .type;
+			@include bordered(1px,dotted,black);
+		}
+		.addType:hover{
+			cursor:pointer;
+		}
+	}
+	.content{
+		width:60%;
+		@include bordered(1px,solid,black);
+		padding:15px;
+		display:inline-block;
+		margin-left:5px;
+
+		.Slot{
+			@include box(150px);
+			@include bordered(1px,solid,black);
+			float:left;
+			margin:5px;
+
+			a{
+				padding:3px 8px;
+				text-decoration:none;
+				margin:5px 3px 3px 3px;
+				border:1px solid blue;
+			}
+		}
+
+		.addSlot{
+			@include box(150px);
+			line-height:75px;
+			text-align:center;	
+			@include bordered(1px,dotted,black);
+			display:inline-block;
+			margin:5px;
+		}
+	}
+}
