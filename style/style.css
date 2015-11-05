@@ -1,61 +1,129 @@
+/* line 10, style.scss */
 .modal {
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); }
-  .modal .modalbody {
-    width: 50%;
-    background-color: #FFF;
-    margin: 15px auto;
-    padding: 20px; }
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 888888;
+}
+/* line 18, style.scss */
+.modal .modalbody {
+  width: 50%;
+  background-color: #FFF;
+  margin: 15px auto;
+  padding: 20px;
+}
 
+/* line 25, style.scss */
+.modal:active {
+  display: block !important;
+  z-index: 999999 !important;
+}
+
+/* line 29, style.scss */
 .hide {
-  display: none; }
+  display: none;
+}
 
+/* line 32, style.scss */
 .right {
   float: right;
-  margin-right: 5px; }
+  margin-right: 5px;
+}
 
+/* line 37, style.scss */
+body {
+  background-color: #F0F0F0;
+}
+/* line 39, style.scss */
 body .plantType {
   width: 20%;
+  min-height: 100px;
   border: 1px solid black;
   float: left;
-  display: inline-block; }
-  body .plantType .type, body .plantType .addType {
-    width: 90%;
-    border: 1px solid black;
-    text-align: center;
-    margin: 3px auto; }
-  body .plantType .addType {
-    border: 1px dotted black; }
-  body .plantType .addType:hover {
-    cursor: pointer; }
+  display: inline-block;
+  background-color: #777777;
+  color: #FFF;
+  padding-top: 5px;
+}
+/* line 48, style.scss */
+body .plantType .type, body .plantType .addType {
+  width: 90%;
+  border: 1px solid #fff3aa;
+  text-align: center;
+  margin: 3px auto;
+  background-color: #FFF3AA;
+  color: #000;
+}
+/* line 56, style.scss */
+body .plantType .addType {
+  border: 1px dashed #444444;
+  background-color: #999999;
+  color: #e1e1e1;
+}
+/* line 62, style.scss */
+body .plantType .addType:hover {
+  cursor: pointer;
+}
+/* line 66, style.scss */
 body .content {
   width: 60%;
   border: 1px solid black;
   padding: 15px;
   display: inline-block;
-  margin-left: 5px; }
-  body .content .Slot {
-    height: 150px;
-    width: 150px;
-    border: 1px solid black;
-    float: left;
-    margin: 5px; }
-    body .content .Slot a {
-      padding: 3px 8px;
-      text-decoration: none;
-      margin: 5px 3px 3px 3px;
-      border: 1px solid blue; }
-  body .content .addSlot {
-    height: 150px;
-    width: 150px;
-    line-height: 75px;
-    text-align: center;
-    border: 1px dotted black;
-    display: inline-block;
-    margin: 5px; }
-
-/*# sourceMappingURL=style.css.map */
+  margin-left: 5px;
+  background-color: green;
+}
+/* line 74, style.scss */
+body .content .Slot {
+  height: 175px;
+  width: 175px;
+  border: 1px solid black;
+  float: left;
+  margin: 5px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background-color: #D4C56A;
+}
+/* line 84, style.scss */
+body .content .Slot a {
+  width: 47%;
+  text-decoration: none;
+  border: 1px solid white;
+  display: inline-block;
+  float: left;
+  margin: 1px;
+  color: #FFF;
+  padding: 3px 0px;
+}
+/* line 95, style.scss */
+body .content .Slot .foot {
+  width: 100%;
+  position: absolute;
+  left: 1px;
+  bottom: 3px;
+  text-align: center;
+}
+/* line 103, style.scss */
+body .content .Slot .viewBtn {
+  background-color: #403075;
+  color: #FFF;
+}
+/* line 107, style.scss */
+body .content .Slot .plantNew, body .content .Slot .harvestBtn {
+  background-color: #55AA55;
+  color: #FFF;
+}
+/* line 113, style.scss */
+body .content .addSlot {
+  height: 175px;
+  width: 175px;
+  line-height: 75px;
+  text-align: center;
+  border: 1px dotted black;
+  display: inline-block;
+  margin: 5px;
+}

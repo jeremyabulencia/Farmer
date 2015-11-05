@@ -1,13 +1,19 @@
 <?php 
 	// require("connection.php");
-	require("models.php"); 
+	include "models.php"; 
 ?>
 <?php
-	if($_POST['addSlot']){
+	if(isset($_POST['addSlot'])){
 		addSlot();
 	}
-	if($_POST['addPlantName']){
+	if(isset($_POST['addPlantName'])){
 		addPlantType($_POST['plantName']);
+	}
+	if(isset($_POST['plantIt'])){
+		plantIt($_POST['Plant']);
+	}
+	if(isset($_GET['harvest'])){
+		harvest($_GET['slotid']);
 	}
 ?>
 <html>
@@ -24,6 +30,24 @@
 				</form>
 			</div>
 		</div>
+		<div id="plantNewModal" class="modal hide active">
+			<div class="modalbody">
+				<a href="" class="close right">close</a>
+				<form name=Plant action="index.php" method="post">
+					<input type="hidden" name=Plant[slot_id]>
+					<?php if(getPlantType()){ ?>
+						<select name=Plant[plantType]>
+							<?php foreach (getPlantType() as $key => $value) { ?>
+								<option value="<?php echo $value['id'] ?>"><?php echo $value['name']; ?></option>
+							<?php } ?>
+						</select>
+						<input type="submit" name="plantIt" value="Submit">
+					<?php }else{ ?>
+						Please create a type of Plant/Flower first.
+					<?php } ?>
+				</form>
+			</div>
+		</div>
 		<div class="plantType">
 			<?php if(getPlantType()){ ?>
 				<?php foreach (getPlantType() as $key => $value) { ?>
@@ -32,7 +56,7 @@
 					</div>
 				<?php } ?>
 			<?php } ?>
-			<div class="addType">Add Type</div>
+			<div class="addType">Create Plant/Flower</div>
 		</div>
 		<div class="content">
 			<?php if(getSlots()){ ?>
@@ -42,13 +66,18 @@
 						<?php echo $status; ?> <br/>
 						<?php if($value['status'] == 1){ ?>
 								<?php $detail = slotDetail($value['id']); ?>
-								<?php echo $detail['plant_name']; ?> 
+								<h4><?php echo $detail['plant_name']; ?></h4> 
 								<br/><br/>
-								<a href="">Harvest</a>
-								<a href="view.php?slotId=<?php echo $value['id']?>">View</a>
+								<div class="foot">
+									<a href="index.php?harvest=true&slotid=<?php echo $value['id']; ?>" class="harvestBtn">Harvest</a>
+									<a href="view.php?slotId=<?php echo $value['id']?>" class="viewBtn">View</a>
+								</div>
 						<?php }else { ?>
 							<br/><br/>
-							<a href="">Plant New</a>
+							<div class="foot">
+								<a href="#" class="plantNew" data-slotId="<?php echo $value['id']; ?>">Plant New</a>
+								<a href="view.php?slotId=<?php echo $value['id']?>" class="viewBtn">View</a>
+							</div>
 						<?php } ?>
 						
 					</div>

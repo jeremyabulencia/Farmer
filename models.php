@@ -1,11 +1,6 @@
 <?php
-	function connection(){
-		$conn = mysqli_connect('localhost', 'root', 'mogwai');
-		$db = mysqli_select_db($conn,'farm');
-
-		return $conn;
-	}
-
+	include "connection.php";
+	
 	function getPlantType(){
 		$conn = connection();
 		$sql = "SELECT * from plant";
@@ -31,9 +26,9 @@
 		$conn = connection();
 		$sql = "INSERT INTO plant (name) VALUES ('".$name."')";
 		if(mysqli_query($conn,$sql)){
-			echo "success";
+			// echo "success";
 		}else{
-			echo "failed";
+			// echo "failed";
 		}
 
 	}
@@ -54,7 +49,7 @@
 		$sql = "SELECT * from slot";
 
 		$query = mysqli_query($conn,$sql);
-		
+
 		$array = array();
 		while($data = mysqli_fetch_array($query)){
 			$arr 				= array();
@@ -89,5 +84,27 @@
 		}
 
 		return $array;
+	}
+
+	function plantIt($params){
+		$conn = connection();
+		$sql = 'UPDATE slot set status=1,plant_id='.$params['plantType'].',planted_date="'.date('Y-m-d',time()).'" where id='.$params['slot_id'];
+
+		if(mysqli_query($conn,$sql)){
+			// echo "success";
+		}else{
+			// echo "failed";
+		}
+	}
+
+	function harvest($slotid){
+		$conn = connection();
+		$sql = 'UPDATE slot set status=0,plant_id="",planted_date="" where id='.$slotid;
+
+		if(mysqli_query($conn,$sql)){
+			// echo "success";
+		}else{
+			// echo "failed";
+		}
 	}
 ?>

@@ -14,13 +14,17 @@
 	width:100%;
 	height:100%;
 	background-color:rgba(0,0,0,0.8);
-
+	z-index:888888;
 	.modalbody{
 		width:50%;
 		background-color:#FFF;
 		margin:15px auto;
 		padding:20px;
 	}
+}
+.modal:active{
+	display:block !important;
+	z-index:999999 !important;
 }
 .hide{
 	display:none;
@@ -31,21 +35,29 @@
 }
 
 body{
+	background-color:#F0F0F0;
 	.plantType{
 		width:20%;
+		min-height:100px;
 		@include bordered(1px,solid,black);
 		float:left;
 		display:inline-block;
-
+		background-color:#777777;
+		color:#FFF;
+		padding-top:5px;
 		.type{
 			width:90%;
-			@include bordered(1px,solid,black);
+			@include bordered(1px,solid,#FFF3AA);
 			text-align:center;
 			margin:3px auto;
+			background-color:#FFF3AA;
+			color:#000;
 		}
 		.addType{
 			@extend .type;
-			@include bordered(1px,dotted,black);
+			@include bordered(1px,dashed,#444444);
+			background-color:#999999;
+			color:#e1e1e1;
 		}
 		.addType:hover{
 			cursor:pointer;
@@ -57,23 +69,49 @@ body{
 		padding:15px;
 		display:inline-block;
 		margin-left:5px;
+		background-color:green;
 
 		.Slot{
-			@include box(150px);
+			@include box(175px);
 			@include bordered(1px,solid,black);
 			float:left;
 			margin:5px;
+			position:relative;
+			z-index:1;
+			text-align:center;
+			background-color:#D4C56A;
 
 			a{
-				padding:3px 8px;
+				width:47%;
 				text-decoration:none;
-				margin:5px 3px 3px 3px;
-				border:1px solid blue;
+				border:1px solid white;
+				display:inline-block;
+				float:left;
+				margin:1px;
+				color:#FFF;
+				padding:3px 0px;
+			}
+
+			.foot{
+				width:100%;
+				position:absolute;
+				left:1px;
+				bottom:3px;
+				text-align:center;
+			}
+
+			.viewBtn{
+				background-color:#403075;
+				color:#FFF;
+			}
+			.plantNew,.harvestBtn{
+				background-color:#55AA55;
+				color:#FFF;
 			}
 		}
 
 		.addSlot{
-			@include box(150px);
+			@include box(175px);
 			line-height:75px;
 			text-align:center;	
 			@include bordered(1px,dotted,black);
