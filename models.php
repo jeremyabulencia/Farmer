@@ -88,7 +88,7 @@
 
 	function plantIt($params){
 		$conn = connection();
-		$sql = 'UPDATE slot set status=1,plant_id='.$params['plantType'].',planted_date="'.date('Y-m-d',time()).'" where id='.$params['slot_id'];
+		$sql = 'UPDATE slot set status=1,plant_id='.$params['plantType'].',planted_date="'.date('Y-m-d H:i:s',time()).'" where id='.$params['slot_id'];
 
 		if(mysqli_query($conn,$sql)){
 			// echo "success";
